@@ -81,7 +81,7 @@ def single_item(item_id):
         })
         response_object['message'] = 'Item updated!'
     if request.method == 'DELETE':
-        remove_book(book_id)
+        remove_item(item_id)
         response_object['message'] = 'Item removed!'
     return jsonify(response_object)
 
