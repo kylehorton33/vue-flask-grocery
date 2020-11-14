@@ -2,17 +2,16 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-10">
-        <h1>Books</h1>
+        <h1>Groceries</h1>
         <hr><br><br>
         <alert :message=message v-if="showMessage"></alert>
-        <button type="button" class="btn btn-success btn-sm" v-b-modal.book-modal>Add Book</button>
+        <button type="button" class="btn btn-success btn-sm" v-b-modal.book-modal>Add Item</button>
         <br><br>
         <table class="table table-hover">
           <thead>
             <tr>
-              <th scope="col">Title</th>
-              <th scope="col">Author</th>
-              <th scope="col">Read?</th>
+              <th scope="col">Item</th>
+              <th scope="col">Category</th>
               <th></th>
             </tr>
           </thead>
@@ -20,10 +19,6 @@
             <tr v-for="(book, index) in books" :key="index">
               <td>{{ book.title }}</td>
               <td>{{ book.author }}</td>
-              <td>
-                <span v-if="book.read">Yes</span>
-                <span v-else>No</span>
-              </td>
               <td>
                 <div class="btn-group" role="group">
                   <button
