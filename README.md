@@ -1,14 +1,32 @@
-# Developing a Single Page App with Flask and Vue.js
+# Simple Grocery List App with Flask and VueJS
 
 ### Want to learn how to build this?
 
 Check out the [post](https://testdriven.io/developing-a-single-page-app-with-flask-and-vuejs).
 
+## TO DO LIST:
+
+- create an 'initilize database' function
+- sort grocery items by categoy
+- auto sort into category
+
+
 ## Want to use this project?
 
 1. Fork/Clone
 
-1. Run the server-side Flask app in one terminal window:
+2. Set environment varible
+
+    Enter the following in a new file: `/client/.env`
+    ```sh
+    VUE_APP_API_URL='http://HOST-IP:5000'
+    ```
+
+3. Initialize database
+
+    TBD
+
+3. Run the server-side Flask app in one terminal window:
 
     ```sh
     $ cd server
@@ -17,10 +35,9 @@ Check out the [post](https://testdriven.io/developing-a-single-page-app-with-fla
     (env)$ pip install -r requirements.txt
     (env)$ python app.py
     ```
+    Navigate to [http://HOST-IP:5000](http://localhost:5000)
 
-    Navigate to [http://localhost:5000](http://localhost:5000)
-
-1. Run the client-side Vue app in a different terminal window:
+4. Run the client-side Vue app in a different terminal window:
 
     ```sh
     $ cd client
@@ -28,4 +45,4 @@ Check out the [post](https://testdriven.io/developing-a-single-page-app-with-fla
     $ npm run serve
     ```
 
-    Navigate to [http://localhost:8080](http://localhost:8080)
+    Navigate to [http://HOST-IP:8080](http://localhost:8080)
