@@ -7,6 +7,8 @@
 <script>
 import axios from 'axios';
 
+const API = process.env.VUE_APP_API_URL || 'http://localhost:5000';
+
 export default {
   name: 'Ping',
   data() {
@@ -16,7 +18,7 @@ export default {
   },
   methods: {
     getMessage() {
-      const path = 'http://localhost:5000/ping';
+      const path = `${API}/ping`;
       axios.get(path)
         .then((res) => {
           this.msg = res.data;

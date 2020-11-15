@@ -120,6 +120,8 @@
 import axios from 'axios';
 import Alert from './Alert.vue';
 
+const API = process.env.VUE_APP_API_URL || 'http://localhost:5000';
+
 export default {
   data() {
     return {
@@ -144,7 +146,7 @@ export default {
   },
   methods: {
     getItems() {
-      const path = 'http://localhost:5000/items';
+      const path = `${API}/items`;
       axios.get(path)
         .then((res) => {
           this.items = res.data.items;
@@ -155,7 +157,7 @@ export default {
         });
     },
     addItem(payload) {
-      const path = 'http://localhost:5000/items';
+      const path = `${API}/items`;
       axios.post(path, payload)
         .then(() => {
           this.getItems();
@@ -211,7 +213,7 @@ export default {
       this.updateItem(payload, this.editForm.id);
     },
     updateItem(payload, itemID) {
-      const path = `http://localhost:5000/items/${itemID}`;
+      const path = `${API}/items/${itemID}`;
       axios.put(path, payload)
         .then(() => {
           this.getItems();
@@ -231,7 +233,7 @@ export default {
       this.getItems(); // why?
     },
     removeItem(itemID) {
-      const path = `http://localhost:5000/items/${itemID}`;
+      const path = `${API}/items/${itemID}`;
       axios.delete(path)
         .then(() => {
           this.getItems();
