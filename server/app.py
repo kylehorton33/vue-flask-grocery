@@ -72,18 +72,17 @@ def all_items():
 @app.route('/items/<item_id>', methods=['PUT', 'DELETE'])
 def single_item(item_id):
     response_object = {'status': 'success'}
+    item = Item.query.filter_by(id=int(item_id)).first()
+
     if request.method == 'PUT':
-        post_data = request.get_json()
-        remove_item(item_id)
-        ITEMS.append({
-            'id': uuid.uuid4().hex,
-            'name': post_data.get('name'),
-            'category': post_data.get('category'),
-            'read': post_data.get('read')
-        })
+        post_data = request.get_json()        
+        item.name = post_data.get('name')
+        item.category = post_data.get('category')
+        db.session.commit()
         response_object['message'] = 'Item updated!'
     if request.method == 'DELETE':
-        remove_item(item_id)
+        db.session.delete(item)
+        db.session.commit()
         response_object['message'] = 'Item removed!'
     return jsonify(response_object)
 
