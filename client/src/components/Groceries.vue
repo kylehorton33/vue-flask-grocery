@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-sm-10">
         <h1>Groceries</h1>
-        <hr><br><br>
+        <br>
         <alert :message=message v-if="showMessage"></alert>
         <button type="button" class="btn btn-success btn-sm" v-b-modal.item-modal>Add Item</button>
         <br><br>
@@ -11,15 +11,15 @@
           <thead>
             <tr>
               <th scope="col">Item</th>
-              <th scope="col">Category</th>
+              <!-- <th scope="col">Category</th> -->
               <th></th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(item, index) in items" :key="index">
               <td>{{ item.name }}</td>
-              <td>{{ item.category }}</td>
-              <td>
+              <!-- <td>{{ item.category }}</td> -->
+              <td class="text-right">
                 <div class="btn-group" role="group">
                   <button
                           type="button"
