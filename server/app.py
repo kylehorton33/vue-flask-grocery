@@ -2,52 +2,7 @@ import uuid
 
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-
-
-ITEMS = [
-    {
-        'id': uuid.uuid4().hex,
-        'name': 'apple',
-        'category': 'produce',
-        'read': True
-    },
-    {
-        'id': uuid.uuid4().hex,
-        'name': 'banana',
-        'category': 'produce',
-        'read': True
-    },
-    {
-        'id': uuid.uuid4().hex,
-        'name': 'orange',
-        'category': 'produce',
-        'read': True
-    },
-    {
-        'id': uuid.uuid4().hex,
-        'name': 'cheese',
-        'category': 'dairy',
-        'read': True
-    },
-    {
-        'id': uuid.uuid4().hex,
-        'name': 'eggs',
-        'category': '',
-        'read': True
-    },
-    {
-        'id': uuid.uuid4().hex,
-        'name': 'milk',
-        'category': 'dairy',
-        'read': False
-    },
-    {
-        'id': uuid.uuid4().hex,
-        'name': 'flour',
-        'category': 'baking',
-        'read': True
-    }
-]
+from flask_sqlalchemy import SQLAlchemy
 
 # configuration
 DEBUG = True
@@ -55,6 +10,18 @@ DEBUG = True
 # instantiate the app
 app = Flask(__name__)
 app.config.from_object(__name__)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///grocery_list.db'
+db = SQLAlchemy(app)
+
+db.Model.metadata.reflect(db.engine)
+
+class Item(db.Model):
+    __tablename__ = 'grocery_list'
+    __table_args__ = { 'extend_existing': True }
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Text, primary_key=False)
+    category = db.Column(db.Text, primary_key=False)
 
 # enable CORS
 CORS(app, resources={r'/*': {'origins': '*'}})
@@ -79,14 +46,25 @@ def all_items():
     response_object = {'status': 'success'}
     if request.method == 'POST':
         post_data = request.get_json()
-        ITEMS.append({
-            'id': uuid.uuid4().hex,
-            'name': post_data.get('name'),
-            'category': post_data.get('category'),
-            'read': post_data.get('read')
-        })
+        item = Item(
+            name = post_data.get('name'),
+            category = post_data.get('category'),
+        )
+        db.session.add(item)
+        db.session.commit()
+
         response_object['message'] = 'Item added!'
     else:
+        ITEMS = []
+        for item in Item.query.all():
+            ITEMS.append(
+                {
+                    "id": item.id,
+                    "name": item.name,
+                    "category": item.category,
+                    "read": True,
+                }
+            )
         response_object['items'] = ITEMS
     return jsonify(response_object)
 
