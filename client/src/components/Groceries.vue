@@ -66,11 +66,6 @@
                           placeholder="Enter category">
             </b-form-input>
           </b-form-group>
-        <b-form-group id="form-read-group">
-          <b-form-checkbox-group v-model="addItemForm.read" id="form-checks">
-            <b-form-checkbox value="true">Read?</b-form-checkbox>
-          </b-form-checkbox-group>
-        </b-form-group>
         <b-button-group>
           <b-button type="submit" variant="primary">Submit</b-button>
           <b-button type="reset" variant="danger">Reset</b-button>
@@ -102,11 +97,6 @@
                           placeholder="Enter category">
             </b-form-input>
           </b-form-group>
-        <b-form-group id="form-read-edit-group">
-          <b-form-checkbox-group v-model="editForm.read" id="form-checks">
-            <b-form-checkbox value="true">Read?</b-form-checkbox>
-          </b-form-checkbox-group>
-        </b-form-group>
         <b-button-group>
           <b-button type="submit" variant="primary">Update</b-button>
           <b-button type="reset" variant="danger">Cancel</b-button>
@@ -129,7 +119,6 @@ export default {
       addItemForm: {
         name: '',
         category: '',
-        read: [],
       },
       message: '',
       showMessage: false,
@@ -137,7 +126,6 @@ export default {
         id: '',
         name: '',
         category: '',
-        read: [],
       },
     };
   },
@@ -173,21 +161,16 @@ export default {
     initForm() {
       this.addItemForm.name = '';
       this.addItemForm.category = '';
-      this.addItemForm.read = [];
       this.editForm.id = '';
       this.editForm.name = '';
       this.editForm.category = '';
-      this.editForm.read = [];
     },
     onSubmit(evt) {
       evt.preventDefault();
       this.$refs.addItemModal.hide();
-      let read = false;
-      if (this.addItemForm.read[0]) read = true;
       const payload = {
         name: this.addItemForm.name,
         category: this.addItemForm.category,
-        read, // property shorthand
       };
       this.addItem(payload);
       this.initForm();
@@ -203,12 +186,9 @@ export default {
     onSubmitUpdate(evt) {
       evt.preventDefault();
       this.$refs.editItemModal.hide();
-      let read = false;
-      if (this.editForm.read[0]) read = true;
       const payload = {
         name: this.editForm.name,
         category: this.editForm.category,
-        read,
       };
       this.updateItem(payload, this.editForm.id);
     },
