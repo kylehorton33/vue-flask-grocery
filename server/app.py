@@ -13,6 +13,30 @@ ITEMS = [
     },
     {
         'id': uuid.uuid4().hex,
+        'name': 'banana',
+        'category': 'produce',
+        'read': True
+    },
+    {
+        'id': uuid.uuid4().hex,
+        'name': 'orange',
+        'category': 'produce',
+        'read': True
+    },
+    {
+        'id': uuid.uuid4().hex,
+        'name': 'cheese',
+        'category': 'dairy',
+        'read': True
+    },
+    {
+        'id': uuid.uuid4().hex,
+        'name': 'eggs',
+        'category': '',
+        'read': True
+    },
+    {
+        'id': uuid.uuid4().hex,
         'name': 'milk',
         'category': 'dairy',
         'read': False
@@ -87,4 +111,4 @@ def single_item(item_id):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=5000)
