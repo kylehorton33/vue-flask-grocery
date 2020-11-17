@@ -6,7 +6,8 @@ Check out the [post](https://testdriven.io/developing-a-single-page-app-with-fla
 
 ## TO DO LIST:
 
-- create an 'initilize database' function [tip](https://stackoverflow.com/questions/20744277/sqlalchemy-create-all-does-not-create-tables)
+- ~~create an 'initilize database' function~~
+- refactor app, database to match [this post](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database)
 - sort grocery items by categoy
 - auto sort into category
 
