@@ -8,7 +8,8 @@ Check out the [post](https://testdriven.io/developing-a-single-page-app-with-fla
 
 - ~~create an 'initilize database' function~~
 - ~~refactor app, database to match [this post](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database)~~
-- sort grocery items by categoy
+- ~~sort grocery items by category~~
+- fix bug in update button :bug:
 - auto sort into category
 
 
