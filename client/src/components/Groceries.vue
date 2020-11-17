@@ -56,16 +56,7 @@
                         placeholder="Enter item">
           </b-form-input>
         </b-form-group>
-        <b-form-group id="form-category-group"
-                      label="Category:"
-                      label-for="form-category-input">
-            <b-form-input id="form-category-input"
-                          type="text"
-                          v-model="addItemForm.category"
-                          required
-                          placeholder="Enter category">
-            </b-form-input>
-          </b-form-group>
+        
         <b-button-group>
           <b-button type="submit" variant="primary">Submit</b-button>
           <b-button type="reset" variant="danger">Reset</b-button>

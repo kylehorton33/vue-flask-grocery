@@ -23,7 +23,6 @@ def all_items():
         post_data = request.get_json()
         item = Item(
             name = post_data.get('name'),
-            category = post_data.get('category'),
         )
         db.session.add(item)
         db.session.commit()
