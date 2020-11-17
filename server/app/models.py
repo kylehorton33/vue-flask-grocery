@@ -6,6 +6,9 @@ class Category(db.Model):
     name = db.Column(db.String(30), nullable=False, unique=True)
     items = db.relationship('Item', backref='category', lazy=True)
 
+    def __repr__(self):
+        return f'<{self.name} ({self.id})>'
+
 class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), nullable=False)
