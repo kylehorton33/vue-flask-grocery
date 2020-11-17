@@ -1,6 +1,6 @@
 from app import app, db
 from flask import jsonify, request
-from app.models import Item
+from app.models import Item, Category
 from flask_cors import CORS
 
 # enable CORS
@@ -30,14 +30,17 @@ def all_items():
         response_object['message'] = 'Item added!'
     else:
         ITEMS = []
-        for item in Item.query.all():
-            ITEMS.append(
-                {
+        for i, category in enumerate(Category.query.all()):
+            ITEMS.append({
+                "category":category.name,
+                "items": [],
+            })
+            for item in category.items:
+                ITEMS[i]["items"].append({
                     "id": item.id,
                     "name": item.name,
                     "category": item.category.name,
-                }
-            )
+                })
         response_object['items'] = ITEMS
     return jsonify(response_object)
 

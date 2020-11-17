@@ -129,6 +129,7 @@ export default {
       axios.get(path)
         .then((res) => {
           this.items = res.data.items;
+          console.log(this.items);
         })
         .catch((error) => {
           // eslint-disable-next-line
