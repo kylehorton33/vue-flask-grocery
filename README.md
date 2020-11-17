@@ -35,7 +35,13 @@ Check out the [post](https://testdriven.io/developing-a-single-page-app-with-fla
 
 4. Initialize database
 
-    TBD
+    From the `server` directory, run the following command:
+    ```sh
+    $ python create_db.py
+    ```
+
+    At the prompt, enter Y to input some initial items or N to start with an empty database
+
 
 4. Run the client-side Vue app in a different terminal window:
 
