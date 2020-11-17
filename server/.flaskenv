@@ -1,0 +1,2 @@
+FLASK_APP=grocery.py
+FLASK_ENV=development

@@ -6,7 +6,7 @@ Check out the [post](https://testdriven.io/developing-a-single-page-app-with-fla
 
 ## TO DO LIST:
 
-- create an 'initilize database' function
+- create an 'initilize database' function [tip](https://stackoverflow.com/questions/20744277/sqlalchemy-create-all-does-not-create-tables)
 - sort grocery items by categoy
 - auto sort into category
 
@@ -22,10 +22,6 @@ Check out the [post](https://testdriven.io/developing-a-single-page-app-with-fla
     VUE_APP_API_URL='http://HOST-IP:5000'
     ```
 
-3. Initialize database
-
-    TBD
-
 3. Run the server-side Flask app in one terminal window:
 
     ```sh
@@ -36,6 +32,10 @@ Check out the [post](https://testdriven.io/developing-a-single-page-app-with-fla
     (env)$ python app.py
     ```
     Navigate to [http://HOST-IP:5000](http://localhost:5000)
+
+4. Initialize database
+
+    TBD
 
 4. Run the client-side Vue app in a different terminal window:
 
