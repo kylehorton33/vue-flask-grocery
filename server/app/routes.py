@@ -35,7 +35,7 @@ def all_items():
                 {
                     "id": item.id,
                     "name": item.name,
-                    "category": item.category,
+                    "category": item.category.name,
                 }
             )
         response_object['items'] = ITEMS
