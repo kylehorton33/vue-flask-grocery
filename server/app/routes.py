@@ -1,6 +1,10 @@
 from app import app
 from flask import jsonify, request
 from app.models import Item
+from flask_cors import CORS
+
+# enable CORS
+CORS(app, resources={r'/*': {'origins': '*'}})
 
 # sanity check route
 @app.route('/')
@@ -8,11 +12,9 @@ from app.models import Item
 def index():
     return "Hello, World!"
 
-
 @app.route('/ping', methods=['GET'])
 def ping_pong():
     return jsonify('pong!')
-
 
 @app.route('/items', methods=['GET', 'POST'])
 def all_items():
