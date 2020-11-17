@@ -9,16 +9,14 @@
         <br><br>
         <table class="table table-hover">
           <thead>
-            <tr>
-              <th scope="col">Item</th>
-              <!-- <th scope="col">Category</th> -->
+          </thead>
+          <tbody v-for="(category, index) in items" :key="index">
+            <tr >
+              <th scope="col">{{ category.category }}</th>
               <th></th>
             </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, index) in items" :key="index">
-              <td>{{ item.name }}</td>
-              <!-- <td>{{ item.category }}</td> -->
+            <tr v-for="item in category.items">
+              <td>{{  item.name  }}</td>
               <td class="text-right">
                 <div class="btn-group" role="group">
                   <button
@@ -37,6 +35,8 @@
                 </div>
               </td>
             </tr>
+          
+            
           </tbody>
         </table>
       </div>

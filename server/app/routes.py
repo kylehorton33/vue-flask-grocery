@@ -51,7 +51,8 @@ def single_item(item_id):
     item = Item.query.filter_by(id=int(item_id)).first()
 
     if request.method == 'PUT':
-        post_data = request.get_json()        
+        post_data = request.get_json()
+        print(post_data)        
         item.name = post_data.get('name')
         item.category = post_data.get('category')
         db.session.commit()
